@@ -1,0 +1,488 @@
+
+
+Important links:
+================
+https://notepad.pw/2a4xdyt2  --notepad code share
+https://drive.google.com/drive/folders/0B6q-PB-6k7WvcWQ0QWx1SWR4ZWc?resourcekey=0-1cJUWaFi__jbWyKfJJeJ0Q&usp=sharing  -- Drive java basics
+https://www.udemy.com/course/learn-complete-core-java-with-practical-examples/?couponCode=638452696DA3DBDAE874   --udemy free course for java
+https://drive.google.com/drive/folders/0B6q-PB-6k7WvaGFGaWU2MGhxYWs?resourcekey=0-I6UTVdDd-EV7HD0cPB6KBw&usp=sharing --design pattern
+https://drive.google.com/drive/folders/1_D9EwcW5ydg-oUkepSsNUKUGONm-84s4 --servlet
+https://www.youtube.com/watch?v=gumM1H4qLUM&t=490s --- solid design pattern
+vskreddy652
+
+Day01 Topic :
+=============
+class
+static
+inheritance & composition
+inheritance - Object - dynamic binding
+abstract class & interface
+collections, Collection, List/Set - HashSet & TreeSet, Iterator
+Collections - reverse, shuffle, sort, synchronize
+Generic
+Java 8
+lambda expression
+default method in interface
+Optional
+@FunctionalInterface
+Streams - filter(), map( ), reduce( )
+
+
+
+Assignments :
+---------------
+1.Change in the Employee program so that set will not allowed to store duplicates
+2.show that a base and dervied classes can be genric?
+3.Employee use streams map() method  to get only employee id and print using foreach
+
+
+Static is always ready can be called from anywhere 
+But Non static cannt be called directly from static.
+If i need data through out the life cycle then only make it static and if not then non static 
+
+Final:
+=============
+We cannot change its value nor we cannt inherit the final class and ovveride final method
+
+
+Inheritance: is -a Class B is a type of A
+===================
+Class A{}
+
+Class B extends A{
+
+}
+
+A obj = new B() ;//it is necessary for run time polymorphism
+
+
+-------------------------------
+
+Composition: Class D has a C
+==============
+has a relationship
+
+Class C{
+
+}
+
+Class D
+{
+
+c obj ;
+}
+
+
+C obj1 = new D() ;//invalid
+
+
+
+Object class method:
+====================
+toString()
+hashCode()
+Class getClass()-- final method
+equals
+wait() -- final method
+notify() -- final method
+notifyAll()-- final method
+
+
+Collection:
+===============
+Size of array is fixed adding any element in between is tidous
+Collection :
+
+Class  List                                                                                           Class Set  (duplicates not allowed and insertion order isnot  preserve and traverse in both diresction )
+=========		                                                                              ==========
+Arraylist(duplicates and insertion order is preserve and traverse in both diresction ) linkedlist      Hashset Treeset Linkedhashset
+
+HAshset is storing duplicates becuase hashcode and equals are not override in the class thats why.
+
+Collections utlity class is there to reverse or shuffle the collection
+collection is a interface  and collections is a class.
+If we are using any custom class inside treeset then it need any comparator to compare the property otherwise it will give error.
+
+In interface the variable needs to be public static final but in abstract class they can be normal
+interface cannot have constructor because they are final and not state is associated because they are final 
+
+
+default method:
+=====================
+
+default method in interface (method can be ovveride)
+Static method also in the interface (static method cannot be override) ;
+
+
+Generic Class :
+=================
+
+It is just like a wrappper put anything which ever we give it will take and store it 
+
+Try:
+
+al.stream().filter((e) -> {
+    return e.getName().contains("s");
+}).forEach((e) -> System.out.println(e)
+}) ;
+
+
+Day 02 :
+===============
+Assignment :
+==============
+1.Develop program which causes outofMemory exception?
+2.com.eg.sp1 can a protected can be acces in the subpackages also
+3.Extract email id from a text file
+
+
+Topics:
+=============
+1 .reduce() expect the two values at a time and compare them and return Optional of product type 
+
+//Minimum 
+tp.stream().reduce((p1,p2) -> {if (p1.getPrice() < p2.getPrice())
+{
+return p1;
+}
+else
+{
+return p2;
+})
+
+
+2.
+For ex:
+
+Tree set has 10 elements 
+
+1. Filter()  : filters the records base on some criteria 
+ 	 ts.streams().filters((e) -> { return e.getPrice() >20})
+   result : will be 0 to 10 element
+   result type will be stream so we can again apply filter reduce anything  
+
+	
+2.  Reduce() : max/min/avg/count :But in case of reduce the result will  be 1 only like smalllest number so result will be 0 and 1
+    but the type of result is optional so we cannot apply any stream fucntion on the optional again.
+ 	
+3.  Map(): transform 
+    result is a stream
+
+
+
+Nested collections are allowed :
+=====================================
+
+TreeMap<Seller,Treeset>
+ArrayList<ArrayList<Product>>
+
+
+Can we create custome collection :yes 
+Arraylist which can store two duplicate and for third it will not take 
+
+Serialization Example 
+========================
+Read from a file and write in the file 
+fileoutputstream is to read from  afile and writeObject method is used write object and readObject is used to read object
+
+JDBC:
+==========
+JDBC is provide as a connector in form of a jar 
+
+Preparestatement:
+=====================
+1.Preparestatement use place holder like ? where ever is data use ?
+Preparestatment pt =ct.prepareStatement("select * fromm demo where id = ?") ;
+pt.setInt(1,100);
+resultset rs=pt.executequery() ;
+
+2.Ps are more secured sql injection is not possible using this it avoid any value insertion in between.
+
+3.ExecuteUpdate for DML query it is used so any change in the db it will return no of records updated.
+
+4.Callable is used for stored procedure
+
+5.Maven project will provide all the dependency injected to our project automatically
+
+6.For any maven project we can download the dependency from google and save in the pom.xml dont need to manually download any jar. 
+
+Regex:
+================
+
+1. .s.
+---- first character may be anything second should be s and after that anything
+    like dss
+
+2.  .?s.
+---  Quantifiers in reges
+     ?(0/1 of preceeding)  *(any number of precedding) + { }
+
+3.For range []
+---- b*s[a-zA-Z]
+
+3. https://www.tutorialspoint.com/java/java_regular_expressions.htm --site to refer 
+
+
+Day03 :
+==================
+
+Assignments :
+================
+1)Assume  you are interacting with paymentgateway1 which allows to perform 
+checkout(String carddetails,string expiray date,int pin ,String cardholdername) ,viewtransaction(Date  from , Date todate).
+Assume that you are using PGAdapter which interacts with payement gateway1.
+
+Now we want to change the code
+2)further assume PaymentGateway1 is being replaced with PaymentGateway2() the methods provided by PaymentGateway2  are  transact(CardDetails cd),gettransaction().
+
+3) Make necessary change to get the salary at director,Manager or developer level
+director - direc+man+dev
+manager =dev +dev
+
+
+
+upload assignemnt in git 
+
+Design pattern:
+=================
+
+Design pattern helps us to know how to design the solution of a problem
+1.Singleton Design pattern :Only one object is created across the application example like notification bar multiple subpart is there but single notification bar is there.
+Algo : make constructor private and use static variable to count the no of instance of a class is created  
+
+Design types:
+
+Creational                       Behavioural       Structure
+Singleton(creation of object)   		   Facade(How to design the structure of class)
+
+
+App
+
+||
+
+Module === App , Network , hardware
+
+If i need to change anything app developer need to check its impact
+
+FACADE:
+============
+
+APP
+
+||
+
+Platorm API (If i need to change anything only platorm api required change no where else)
+
+||
+
+Module === App , Network , hardware
+
+
+Proxy Design Pattern :
+======================
+
+representing someone else and here we use proxy so that to improve performance
+
+class videoplayer
+{
+	String filename ;
+	video obj ;
+
+video loadvideo()
+{
+
+}
+}
+when we create its object  it load complete video in video obj I want to create a albumn
+i want to show all the videos in my albumn(all the video present are loaded in the memory because video object is created )
+album have 9 video so all 9 will load in the memory even if i want to play only 1 or 2
+It is not a good design because extra memory is utilising it si developed by someone what we can do
+we create its proxy like
+
+
+class videoplayerproxy
+{
+	String filename;
+         videopalyer vplayer;
+        getThumbnail()
+	{
+	 
+	}
+	void play()
+	{
+	  //onclick of play button only i am creating object not  already loading all the video in the memory
+          videoplayer vp = new videoplayer();
+	   vp.loadvideo();
+	}
+}
+
+
+Adapter Design Pattern:
+============================
+Adapter adapts the interface change in the exisiting one 
+your code
+
+||| depends on
+|||
+
+Class xyz(this xyz is replaced with some other class ABC in future and it has some different methods now)
+Now i need to change in my code 
+so the solution is writing adapter class 
+
+like Class xyz extends ABC
+{
+	make use of abc functionality and expose it as xyz
+}
+
+
+Builder Design Pattern :
+======================
+creating an object not relay on constructor use method
+
+when we have more than 2-3 parameters there is chance of confusion  when we create object 
+parameters values can be change for this we need to create cakebuilder
+like setSugar(),setFlour(),setHoney()
+
+cake is main class and cake builder is just an addon so that to avoid confusion of object creation
+
+cake(float sugar, float flour1,float honey)
+
+//make constructor private
+class cake
+{
+
+	class static cakebuilder
+	{
+
+	}
+
+}
+
+
+Factory DEsign pattern :
+============================
+
+Which will create object and give us the object 
+drivermanager.getConnection is exmaple drivermanager class is providing us the obejct of connection
+On the basis of need factory will give object
+
+
+Decorator :
+=================
+
+Fileinputstream fis = Fileinputstream fis() ;
+
+we can refer the above as :
+if(1)
+Inputstream fis = Fileinputstream fis() ;
+
+else
+is =ByteArrayInputstream()
+
+so basically the input we are asking on the runtime not on compile time like input from keyboard or file
+
+//you can unread data using pushback 
+Pushbackinputstream pbis = new Pushbackinputstream (fis)//inputstream
+add/modifiy the object at runtime
+
+
+
+Composite pattern :
+===========================
+population of various states then analysis need to be done by each state and district
+so we need to follow parent child relation to store such data.
+
+1.composite object in hirerachy like nodes and leaf
+2.treat individual object and combine them
+
+town
+
+karnataka
+
+dist1  dist2
+
+t1 t2	t1  t2 
+
+
+
+Mediator Design Pattern :
+=============================
+component1----componrnt5
+	||
+	||
+	Mediator	
+	||
+	||
+component2-- component5
+component2 ---component4
+component4----component3
+
+
+now we need to change the component4 then all the dependent on component4 need to be change
+reason is lot of efforts need to change and everything is tightly coupling
+to solve this there can be a mediator class which then can interact with other
+
+
+Day 04:
+================
+Servlet :
+
+localhost:8080
+//port number is used to run multiple application if it not there only one network application can be run.
+
+Request:
+Request Body
+
+Response:
+Status Code
+Headers
+Response Body
+
+Cookie : Is a small piece of information can be stored on client and server machine
+
+Headers : Accept,Content-Type etc 
+Status code series: 1NN - for information purpose ,
+		    2NN-ok ,
+                    3NN-redirect,
+          	    4NN-error/url is notfound ,
+		    5NN--Exception/Network Problem/Configuration
+
+
+1.Extends HttpServlet
+2.Override doget/dopost method
+3.In doGet --Request Body it is not there every thing need to give in query parameter
+what we need to send present in the request object and what we need to give back present in response object
+
+web.xml -Deployment Descirptor
+Mapping between url and servlet class using web.xml or using annotation @webServelet("/") ;
+configuration parameters 
+filters
+
+filters will check the chain in the web.xml and execute
+
+MyFirstServlet example : for htmlservlet form example
+
+Session :
+===============
+Http is a stateless protocol doesnot remember any state 
+so thats why HTTP session is ued
+	create a new session getSession() method will create new sesssion
+	we can access the exisiting session
+	we can remove or add attribute to or from a session -- session.setAttribute() to store anything in the session object
+	destroy the session
+
+
+Cookie is store at client machine.
+servlet context:passing the parametr from web.xml so whenever we need to change we need to change in the .xml file 
+JSP java server page is an extension of servlet code is compact and tags are there but .jsp file internally it creates the servlet and then .class file from servlet file which makes 
+its execution slow.
+
+<%! decalare %> decalare variable
+
+<% script  %>  any processing code like doget/dopost
+
+<%= experssion %> like calualtion a+b
+
+<%-- comment --%>
+
+<%@ directive %> exception
